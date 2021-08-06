@@ -33,7 +33,7 @@ PUBLIC void fiveInaRow()
 		{
 			break;
 		}
-		boxfill8(SCREEN_WIDTH, 14, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);	//清屏
+		//boxfill8(SCREEN_WIDTH, 12, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);	//清屏
 		printBoard(); //打印棋盘
 
 		PlayerMove(1); //玩家b走
@@ -48,18 +48,33 @@ PUBLIC void fiveInaRow()
 	// 判断输赢或平局
 	if (ret == 'p')
 	{ 
-		printBoard(); //打印棋盘
-                vm_print_letter(90,0,7,"DRAW!"); 
+		while(1)
+		{
+			printBoard(); //打印棋盘
+					vm_print_letter(90,0,7,"DRAW!"); 
+			if(GETINPUT())
+				break;					
+		}
 	}
 	else if (ret == BLACK)
 	{
-		printBoard(); //打印棋盘
-		vm_print_letter(80,0,7,"PLAYER A WIN!"); 
+		while(1)
+		{
+			printBoard(); //打印棋盘
+			vm_print_letter(80,0,0,"BLACK WIN!"); 
+			if(GETINPUT())
+				break;
+		}
 	}
 	else if (ret == WHITE)
 	{
-		printBoard();  //打印棋盘
-		vm_print_letter(80,0,7,"PLAYER B WIN!"); 
+		while( 1)
+		{
+			printBoard();  //打印棋盘
+			vm_print_letter(80,0,7,"WHITE WIN!"); 
+			if(GETINPUT())
+				break;			
+		} 
 	}
 	clearScreen();
 }
@@ -74,7 +89,7 @@ PUBLIC void initBoard()
 			board1[i][j] = '0';
 		}
 	}
-	boxfill8(SCREEN_WIDTH, 14, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);	//����
+	boxfill8(SCREEN_WIDTH, 12, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);	//����
 
 	vm_op_line(100, 40, 250, 40, 0);
 	vm_op_line(100, 50, 250, 50, 0);
@@ -114,7 +129,7 @@ PUBLIC void initBoard()
 //打印棋盘 
 PUBLIC void printBoard()
 {
-	boxfill8(SCREEN_WIDTH, 14, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);	//����
+	boxfill8(SCREEN_WIDTH, 12, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);	//����
 
 	vm_op_line(100, 40, 250, 40, 0);
 	vm_op_line(100, 50, 250, 50, 0);
@@ -178,16 +193,16 @@ PUBLIC void PlayerMove(int player)
 	int color;
 	int color_num;
 	if (player == 0) {
-		vm_print_letter(0, 0, 0, "Player A go.");
+		vm_print_letter(0, 0, 0, "BLACK go.");
                 color = BLACK;
 		color_num = 0;
 	}
 	if (player == 1) {
-		vm_print_letter(0, 0, 0, "Player B go.");
+		vm_print_letter(0, 0, 8, "WHITE go.");
 		color = WHITE;
 		color_num = 8;
 	}
-	vm_print_letter(0, 20, 0, "Please choose a location.");
+	vm_print_letter(0, 20, 0, "Move:W  S  A  D		Sure:P.");
 	int x = 8;
 	int y = 8;
 	if (board1[7][7] == '0') {
@@ -222,7 +237,7 @@ PUBLIC void PlayerMove(int player)
 
 		else if (key == 'w' || key == 'W') {
 			if (board1[x - 1][y - 1] == '0') {
-				vm_op_rectangle(91 + 10 * x, 31 + 10 * y, 99 + 10 * x, 39 + 10 * y, 14);
+				vm_op_rectangle(91 + 10 * x, 31 + 10 * y, 99 + 10 * x, 39 + 10 * y, 12);
 			}
 			y--;
 			if (x >= 1 && x <= ROW && y >= 1 && y <= COL) {
@@ -238,7 +253,7 @@ PUBLIC void PlayerMove(int player)
 
 		else if (key == 's' || key == 'S') {
 			if (board1[x - 1][y - 1] == '0') {
-				vm_op_rectangle(91 + 10 * x, 31 + 10 * y, 99 + 10 * x, 39 + 10 * y, 14);
+				vm_op_rectangle(91 + 10 * x, 31 + 10 * y, 99 + 10 * x, 39 + 10 * y, 12);
 			}
 			y++;
 			if (x >= 1 && x <= ROW && y >= 1 && y <= COL) {
@@ -253,7 +268,7 @@ PUBLIC void PlayerMove(int player)
 
 		else if (key == 'a' || key == 'A') {
 			if (board1[x - 1][y - 1] == '0') {
-				vm_op_rectangle(91 + 10 * x, 31 + 10 * y, 99 + 10 * x, 39 + 10 * y, 14);
+				vm_op_rectangle(91 + 10 * x, 31 + 10 * y, 99 + 10 * x, 39 + 10 * y, 12);
 			}
 			x--;
 			if (x >= 1 && x <= ROW && y >= 1 && y <= COL) {
@@ -268,7 +283,7 @@ PUBLIC void PlayerMove(int player)
 
 		else if (key == 'd' || key == 'D') {
 			if (board1[x - 1][y - 1] == '0') {
-				vm_op_rectangle(91 + 10 * x, 31 + 10 * y, 99 + 10 * x, 39 + 10 * y, 14);
+				vm_op_rectangle(91 + 10 * x, 31 + 10 * y, 99 + 10 * x, 39 + 10 * y, 12);
 			}
 			x++;
 			if (x >= 1 && x <= ROW && y >= 1 && y <= COL) {
