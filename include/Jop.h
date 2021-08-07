@@ -40,7 +40,7 @@ struct  {
  
 }myair;
 
-//食物相关属性
+//敌机相关属性
 struct enemy{
 	int x;
 	int y;
@@ -73,8 +73,8 @@ PUBLIC void GOJOP() {
 			break;
 		}
 	
-	 vm_print_letter(90,80,7,"YOU LOSE");		
-	 vm_print_letter(90,100,7,"RESTART?[y/n]");
+	 vm_print_letter(90,80,0,"YOU LOSE");		
+	 vm_print_letter(90,100,0,"RESTART?[y/n]");
 			u32 key=GETINPUT();
 			if(key=='y'||key=='Y')
 			{
@@ -117,7 +117,7 @@ PUBLIC void initmap_jop(){
 	for(int x=OFFSET-1;x<MAPWITH_JOP/2+OFFSET+1;x++)
 	{
 		for (int y=OFFSET+1;y<MAPHIGH_JOP/2+OFFSET;y++)
-		vm_op_rec_64px(x,y,6);
+		vm_op_rec_64px(x,y,14);
 	}
 
 	
@@ -179,7 +179,7 @@ PUBLIC void move_jop()
 
 //清除原先飞机
 	for (int i = AIRPLANT - 1; i>=0; i--) {
-		vm_op_rec_64px(myair.x[i], myair.y[i], 6);
+		vm_op_rec_64px(myair.x[i], myair.y[i], 14);
 	}
     
 	//判断蛇头应该往哪个方向移动
@@ -233,7 +233,7 @@ PUBLIC void firebullet()
 PUBLIC void CleanmyBullet(int x, int y)
 {
 //清除己方炮弹
-	vm_op_rec_64px(x, y, 6);
+	vm_op_rec_64px(x, y, 14);
 }
 
 PUBLIC void printBullet(int x, int y)
@@ -253,10 +253,10 @@ PUBLIC void collion()
 			if (bullet[j].y >= Enemy[i].y-2&&bullet[j].y <= Enemy[i].y+2&&  bullet[j].x == Enemy[i].x)//当击中时
 			{
 
-		vm_op_rec_64px(Enemy[i].x, Enemy[i].y, 6);
-		vm_op_rec_64px(Enemy[i].x + 1, Enemy[i].y, 6);
-		vm_op_rec_64px(Enemy[i].x, Enemy[i].y+1, 6);
-		vm_op_rec_64px(Enemy[i].x, Enemy[i].y-1, 6);
+		vm_op_rec_64px(Enemy[i].x, Enemy[i].y, 14);
+		vm_op_rec_64px(Enemy[i].x + 1, Enemy[i].y, 14);
+		vm_op_rec_64px(Enemy[i].x, Enemy[i].y+1, 14);
+		vm_op_rec_64px(Enemy[i].x, Enemy[i].y-1, 14);
 		        srand(TTime());
 		        Enemy[i].x = OFFSET;
 		        Enemy[i].y = OFFSET +1+ rand() % ( MAPHIGH_JOP/ 2 -3);
@@ -318,10 +318,10 @@ PUBLIC void cleanEmeny()//清除敌机（绘制清除）
 	for (int i = 0; i < emenycount; i++)
 	{
 
-		vm_op_rec_64px(Enemy[i].x, Enemy[i].y, 6);
-		vm_op_rec_64px(Enemy[i].x + 1, Enemy[i].y, 6);
-		vm_op_rec_64px(Enemy[i].x, Enemy[i].y+1, 6);
-		vm_op_rec_64px(Enemy[i].x, Enemy[i].y-1, 6);
+		vm_op_rec_64px(Enemy[i].x, Enemy[i].y, 14);
+		vm_op_rec_64px(Enemy[i].x + 1, Enemy[i].y, 14);
+		vm_op_rec_64px(Enemy[i].x, Enemy[i].y+1, 14);
+		vm_op_rec_64px(Enemy[i].x, Enemy[i].y-1, 14);
 	}
 
 }
@@ -348,10 +348,10 @@ PUBLIC void reprintEmeny()//重绘敌机
 
 		}
 		else if(Enemy[i].x>=OFFSET+MAPWITH_JOP/2-1){
-		vm_op_rec_64px(Enemy[i].x, Enemy[i].y, 6);
-		vm_op_rec_64px(Enemy[i].x + 1, Enemy[i].y, 6);
-		vm_op_rec_64px(Enemy[i].x, Enemy[i].y+1, 6);
-		vm_op_rec_64px(Enemy[i].x, Enemy[i].y-1, 6);
+		vm_op_rec_64px(Enemy[i].x, Enemy[i].y, 14);
+		vm_op_rec_64px(Enemy[i].x + 1, Enemy[i].y, 14);
+		vm_op_rec_64px(Enemy[i].x, Enemy[i].y+1, 14);
+		vm_op_rec_64px(Enemy[i].x, Enemy[i].y-1, 14);
 		        srand(TTime());
 		        Enemy[i].x = OFFSET;
 		        Enemy[i].y = OFFSET +1+ rand() % ( MAPHIGH_JOP/ 2 -3);
@@ -424,8 +424,11 @@ PUBLIC void bojudge_jop()
 {
 
 for(int i=0;i<emenycount;i++){
-	if((Enemy[i].x==myair.x[0])&&(Enemy[i].y==myair.y[0]))
-	gameover=1;
+	if(Enemy[i].y-myair.y[0]<3&&Enemy[i].y-myair.y[0]>-3)
+	{
+		if(Enemy[i].x-myair.x[0]<=2&&Enemy[i].x-myair.x[0]>=0)
+			gameover=1;
+	}
 }
 	//蛇头碰到上下边界，游戏结束
 	if (myair.y[0] == OFFSET+1 || myair.y[0] == MAPHIGH_JOP/2+OFFSET-1)
