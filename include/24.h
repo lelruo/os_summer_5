@@ -9,7 +9,7 @@
 #define OFFSETPIXEL_24 5 //偏移块数
 
 /*        函数声明         */
-PUBLIC void InitMap_24();	 //初始化贪吃蛇地图
+PUBLIC void InitMap_24();	 //初始化游戏地图
 PUBLIC void InitOthers_24(); //对地图外的其余元素进行初始化
 PUBLIC void MOVE_24();		 //对移动进行判断
 PUBLIC void INPUT_24();		 //输入判断
@@ -133,7 +133,7 @@ void UPDATESCORE_24() //50*80
 	char *_score;
 	iitoa_24(score_24, _score, 10);
 	vm_op_rectangle(270, 10, 320, 26, 15);
-	vm_print_letter(270, 10, 7, _score);
+	vm_print_letter(270, 10, 1, _score);
 }
 PUBLIC void InitMap_24()
 {
@@ -165,9 +165,9 @@ PUBLIC void InitOthers_24()
 {
 
 	vm_print_letter(70, 10, 13, "24points Games!");
-	vm_print_letter(220, 10, 7, "Score:");
-	vm_print_letter(270, 10, 7, "0");
-	vm_print_letter(50, 170, 7, "if numbers can be 24[y],or[n]");
+	vm_print_letter(220, 10, 1, "Score:");
+	vm_print_letter(270, 10, 1, "0");
+	vm_print_letter(50, 170, 7, "if numbers can be caculated to 24[y],or[n]");
 	vm_print_letter(100, 186, 7, "EXIT[Enter]");
 }
 
@@ -453,9 +453,9 @@ PUBLIC void GOPOINTS()
 		{
 			break;
 		}
-
-		vm_print_letter(90, 80, 7, "YOU LOSE");
-		vm_print_letter(90, 100, 7, "RESTART?[y/n]");
+		clear()//清屏
+		vm_print_letter(90, 80, 1, "YOU LOSE");
+		vm_print_letter(90, 100, 1, "RESTART?PRESS[y/n]");
 		u32 key = GETINPUT();
 		if (key == 'y' || key == 'Y')
 		{

@@ -31,37 +31,37 @@ PUBLIC void postfix();
 PUBLIC void transform(char g[]);
 
 PUBLIC void InitCal() {
-	boxfill8(SCREEN_WIDTH, 14, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);	//����
+	boxfill8(SCREEN_WIDTH, 15, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);	//����
 
-	vm_op_line(60, 30, 180, 30, 0);
-	vm_op_line(60, 60, 180, 60, 0);
-	vm_op_line(60, 90, 180, 90, 0);
-	vm_op_line(60, 120, 180, 120, 0);
-	vm_op_line(60, 150, 180, 150, 0);
-	vm_op_line(60, 180, 180, 180, 0);
+	vm_op_line(60, 30, 180, 30, 2);
+	vm_op_line(60, 60, 180, 60, 2);
+	vm_op_line(60, 90, 180, 90, 2);
+	vm_op_line(60, 120, 180, 120, 2);
+	vm_op_line(60, 150, 180, 150, 2);
+	vm_op_line(60, 180, 180, 180, 2);
 
-	vm_op_line(60, 30, 60, 180, 0);
-	vm_op_line(90, 60, 90, 180, 0);
-	vm_op_line(120, 60, 120, 180, 0);
-	vm_op_line(150, 60, 150, 180, 0);
-	vm_op_line(180, 30, 180, 180, 0);
+	vm_op_line(60, 30, 60, 180, 2);
+	vm_op_line(90, 60, 90, 180, 2);
+	vm_op_line(120, 60, 120, 180, 2);
+	vm_op_line(150, 60, 150, 180, 2);
+	vm_op_line(180, 30, 180, 180, 2);
 
-	vm_print_letter(70, 70, 0, "7");
-	vm_print_letter(100, 70, 0, "8");
-	vm_print_letter(130, 70, 0, "9");
-	vm_print_letter(160, 70, 0, "+");
-	vm_print_letter(70, 100, 0, "4");
-	vm_print_letter(100, 100, 0, "5");
-	vm_print_letter(130, 100, 0, "6");
-	vm_print_letter(160, 100, 0, "-");
-	vm_print_letter(70, 130, 0, "1");
-	vm_print_letter(100, 130, 0, "2");
-	vm_print_letter(130, 130, 0, "3");
-	vm_print_letter(160, 130, 0, "*");
-	vm_print_letter(70, 160, 0, "0");
-        vm_print_letter(100, 160, 0, ".");
-	vm_print_letter(130, 160, 0, "=");
-	vm_print_letter(160, 160, 0, "/");
+	vm_print_letter(70, 70, 2, "7");
+	vm_print_letter(100, 70, 2, "8");
+	vm_print_letter(130, 70, 2, "9");
+	vm_print_letter(160, 70, 2, "+");
+	vm_print_letter(70, 100, 2, "4");
+	vm_print_letter(100, 100, 2, "5");
+	vm_print_letter(130, 100, 2, "6");
+	vm_print_letter(160, 100, 2, "-");
+	vm_print_letter(70, 130, 2, "1");
+	vm_print_letter(100, 130, 2, "2");
+	vm_print_letter(130, 130, 2, "3");
+	vm_print_letter(160, 130, 2, "*");
+	vm_print_letter(70, 160, 2, "0");
+        vm_print_letter(100, 160, 2, ".");
+	vm_print_letter(130, 160, 2, "=");
+	vm_print_letter(160, 160, 2, "/");
 }
 
 PUBLIC double readnum(int* i)
@@ -229,10 +229,10 @@ PUBLIC void calculate()
 	do
 	{
 		InitCal();
-				vm_op_line(REC[0].x_start, REC[0].y_start, REC[0].x_start + 30, REC[0].y_start, 6);
-		vm_op_line(REC[0].x_start, REC[0].y_start, REC[0].x_start, REC[0].y_start + 30, 6);
-		vm_op_line(REC[0].x_start + 30, REC[0].y_start, REC[0].x_start + 30, REC[0].y_start + 30, 6);
-		vm_op_line(REC[0].x_start, REC[0].y_start + 30, REC[0].x_start + 30, REC[0].y_start + 30, 6);
+				vm_op_line(REC[0].x_start, REC[0].y_start, REC[0].x_start + 30, REC[0].y_start, 3);
+		vm_op_line(REC[0].x_start, REC[0].y_start, REC[0].x_start, REC[0].y_start + 30, 3);
+		vm_op_line(REC[0].x_start + 30, REC[0].y_start, REC[0].x_start + 30, REC[0].y_start + 30, 3);
+		vm_op_line(REC[0].x_start, REC[0].y_start + 30, REC[0].x_start + 30, REC[0].y_start + 30, 3);
 		int choose = 0;
 		int count = -1;
 		while (1) {
@@ -243,64 +243,64 @@ PUBLIC void calculate()
 				if (choose == 2)
 					break;
 				else {
-					vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start, 0);
-					vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start, REC[choose].y_start + 30, 0);
-					vm_op_line(REC[choose].x_start + 30, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start + 30, 0);
-					vm_op_line(REC[choose].x_start, REC[choose].y_start + 30, REC[choose].x_start + 30, REC[choose].y_start + 30, 0);
+					vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start, 2);
+					vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start, REC[choose].y_start + 30, 2);
+					vm_op_line(REC[choose].x_start + 30, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start + 30, 2);
+					vm_op_line(REC[choose].x_start, REC[choose].y_start + 30, REC[choose].x_start + 30, REC[choose].y_start + 30, 2);
 					choose = 0;
 				}
 			}
 
 			else if (key == 'w' || key == 'W') {
 				if (choose != 12 && choose != 13 && choose != 14 && choose != 15) {
-					vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start, 0);
-					vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start, REC[choose].y_start + 30, 0);
-					vm_op_line(REC[choose].x_start + 30, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start + 30, 0);
-					vm_op_line(REC[choose].x_start, REC[choose].y_start + 30, REC[choose].x_start + 30, REC[choose].y_start + 30, 0);
+					vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start,2);
+					vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start, REC[choose].y_start + 30, 2);
+					vm_op_line(REC[choose].x_start + 30, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start + 30, 2);
+					vm_op_line(REC[choose].x_start, REC[choose].y_start + 30, REC[choose].x_start + 30, REC[choose].y_start + 30,2);
 					choose += 4;
-					vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start, 6);
-					vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start, REC[choose].y_start + 30, 6);
-					vm_op_line(REC[choose].x_start + 30, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start + 30, 6);
-					vm_op_line(REC[choose].x_start, REC[choose].y_start + 30, REC[choose].x_start + 30, REC[choose].y_start + 30, 6);
+					vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start, 3);
+					vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start, REC[choose].y_start + 30, 3);
+					vm_op_line(REC[choose].x_start + 30, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start + 30, 3);
+					vm_op_line(REC[choose].x_start, REC[choose].y_start + 30, REC[choose].x_start + 30, REC[choose].y_start + 30, 3);
 				}
 }
 				else if (key == 's' || key == 'S') {
 					if (choose != 0 && choose != 1 && choose != 2 && choose != 3) {
-						vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start, 0);
-						vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start, REC[choose].y_start + 30, 0);
-						vm_op_line(REC[choose].x_start + 30, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start + 30, 0);
-						vm_op_line(REC[choose].x_start, REC[choose].y_start + 30, REC[choose].x_start + 30, REC[choose].y_start + 30, 0);
+						vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start, 2);
+						vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start, REC[choose].y_start + 30, 2);
+						vm_op_line(REC[choose].x_start + 30, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start + 30, 2);
+						vm_op_line(REC[choose].x_start, REC[choose].y_start + 30, REC[choose].x_start + 30, REC[choose].y_start + 30, 2);
 						choose -= 4;
-						vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start, 6);
-						vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start, REC[choose].y_start + 30, 6);
-						vm_op_line(REC[choose].x_start + 30, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start + 30, 6);
-						vm_op_line(REC[choose].x_start, REC[choose].y_start + 30, REC[choose].x_start + 30, REC[choose].y_start + 30, 6);
+						vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start, 3);
+						vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start, REC[choose].y_start + 30, 3);
+						vm_op_line(REC[choose].x_start + 30, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start + 30, 3);
+						vm_op_line(REC[choose].x_start, REC[choose].y_start + 30, REC[choose].x_start + 30, REC[choose].y_start + 30, 3);
 					}
 				}
 				else if (key == 'a' || key == 'A') {
 					if (choose != 0 && choose != 4 && choose != 8 && choose != 12) {
-						vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start, 0);
-						vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start, REC[choose].y_start + 30, 0);
-						vm_op_line(REC[choose].x_start + 30, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start + 30, 0);
-						vm_op_line(REC[choose].x_start, REC[choose].y_start + 30, REC[choose].x_start + 30, REC[choose].y_start + 30, 0);
+						vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start, 2);
+						vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start, REC[choose].y_start + 30, 2);
+						vm_op_line(REC[choose].x_start + 30, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start + 30, 2);
+						vm_op_line(REC[choose].x_start, REC[choose].y_start + 30, REC[choose].x_start + 30, REC[choose].y_start + 30, 2);
 						choose--;
-						vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start, 6);
-						vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start, REC[choose].y_start + 30, 6);
-						vm_op_line(REC[choose].x_start + 30, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start + 30, 6);
-						vm_op_line(REC[choose].x_start, REC[choose].y_start + 30, REC[choose].x_start + 30, REC[choose].y_start + 30, 6);
+						vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start, 3);
+						vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start, REC[choose].y_start + 30, 3);
+						vm_op_line(REC[choose].x_start + 30, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start + 30, 3);
+						vm_op_line(REC[choose].x_start, REC[choose].y_start + 30, REC[choose].x_start + 30, REC[choose].y_start + 30, 3);
 					}
 				}
 				else if (key == 'd' || key == 'D') {
 					if (choose != 3 && choose != 7 && choose != 11 && choose != 15) {
-						vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start, 0);
-						vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start, REC[choose].y_start + 30, 0);
-						vm_op_line(REC[choose].x_start + 30, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start + 30, 0);
-						vm_op_line(REC[choose].x_start, REC[choose].y_start + 30, REC[choose].x_start + 30, REC[choose].y_start + 30, 0);
+						vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start, 2);
+						vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start, REC[choose].y_start + 30, 2);
+						vm_op_line(REC[choose].x_start + 30, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start + 30, 2);
+						vm_op_line(REC[choose].x_start, REC[choose].y_start + 30, REC[choose].x_start + 30, REC[choose].y_start + 30, 2);
 						choose++;
-						vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start, 6);
-						vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start, REC[choose].y_start + 30, 6);
-						vm_op_line(REC[choose].x_start + 30, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start + 30, 6);
-						vm_op_line(REC[choose].x_start, REC[choose].y_start + 30, REC[choose].x_start + 30, REC[choose].y_start + 30, 6);
+						vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start, 3);
+						vm_op_line(REC[choose].x_start, REC[choose].y_start, REC[choose].x_start, REC[choose].y_start + 30, 3);
+						vm_op_line(REC[choose].x_start + 30, REC[choose].y_start, REC[choose].x_start + 30, REC[choose].y_start + 30, 3);
+						vm_op_line(REC[choose].x_start, REC[choose].y_start + 30, REC[choose].x_start + 30, REC[choose].y_start + 30, 3);
 					}
 				}
 			}
@@ -309,7 +309,7 @@ PUBLIC void calculate()
 			postfix();
 			int answer = evalpost();
 			char *c1;
-			vm_print_letter(75, 45, 0, iitoa(answer, *c1, 10));
+			vm_print_letter(75, 45, 2, iitoa(answer, *c1, 10));
 			while (1)
 			{
 				flag = 3;
