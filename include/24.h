@@ -164,10 +164,10 @@ PUBLIC void InitMap_24()
 PUBLIC void InitOthers_24()
 {
 
-	vm_print_letter(70, 10, 13, "24points Games!");
+	vm_print_letter(70, 10, 1, "24points Games!");
 	vm_print_letter(220, 10, 1, "Score:");
 	vm_print_letter(270, 10, 1, "0");
-	vm_print_letter(50, 170, 7, "if numbers can be caculated to 24[y],or[n]");
+	vm_print_letter(50, 170, 7, "if numbers can be 24[y],[n]");
 	vm_print_letter(100, 186, 7, "EXIT[Enter]");
 }
 
@@ -360,7 +360,7 @@ PUBLIC void GOPOINTS()
 	InitMap_24();	 //对地图进行初始化
 	InitOthers_24(); //字符初始化
 	//游戏主循环
-	while (1)
+	while (!exitflag_24)
 	{
 		while (!gameover_24)
 		{
@@ -413,6 +413,11 @@ PUBLIC void GOPOINTS()
 			printf("D= %d\n", t);
 */
 			INPUT_24(); //处理输入
+			
+			if (exitflag_24 == 1)
+			{
+				break;
+			}
 			/*
 			char *o;
 			vm_print_letter(100, 50, 7, "option=");
@@ -449,11 +454,8 @@ PUBLIC void GOPOINTS()
 			}
 			milli_delay(1000);
 		}
-		if (exitflag_24 == 1)
-		{
-			break;
-		}
-		clear()//清屏
+		
+		clear();		 //清屏
 		vm_print_letter(90, 80, 1, "YOU LOSE");
 		vm_print_letter(90, 100, 1, "RESTART?PRESS[y/n]");
 		u32 key = GETINPUT();
